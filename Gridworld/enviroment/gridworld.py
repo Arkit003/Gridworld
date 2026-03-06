@@ -3,11 +3,11 @@ import numpy as np
 from Gridworld.enviroment.action import Action
 
 class GridWorld:
-    def __init__(self,rows:int,cols:int,action:Action,discount_factor:float) -> None:
+    def __init__(self,rows:int,cols:int,action:Action,discount_factor:float=1,terminal_state:tuple=(0,0),reward:int=-1) -> None:
         self.rows =rows
         self.cols = cols
-        self.terminal_state_start=(0,0)
-        self.reward = -1
+        self.terminal_state_start=terminal_state
+        self.reward = reward
         self.discount_factor = discount_factor
         self.actions = action.get_actions()
         self.grid = []
@@ -42,16 +42,16 @@ class GridWorld:
         return grid
             
     
-if __name__ == "__main__":
-    row = 4
-    col=4
-    action = Action()
-    grid = GridWorld(row,col,action,1)
-    print(grid.step((1,1),"up"))
-    # grid.get_states()
-    print(grid.step((0,0),"up"))
-    print(grid.step((0,0),"left"))
-    print(grid.step((3,3),"down"))
+# if __name__ == "__main__":
+#     row = 4
+#     col=4
+#     action = Action()
+#     grid = GridWorld(row,col,action,1)
+#     print(grid.step((1,1),"up"))
+#     # grid.get_states()
+#     print(grid.step((0,0),"up"))
+#     print(grid.step((0,0),"left"))
+#     print(grid.step((3,3),"down"))
 
 
 
