@@ -17,14 +17,10 @@ class GridWorld:
     def is_terminal(self,row,col)->bool:
         return  self.terminal_state_start == (row,col)
 
-
-    def initial_grid(self)->np.array:
-        arr=np.zeros((self.rows,self.cols))
-        return arr
-
     def step(self,state:tuple,action:str):
         row,col = state
         if self.is_terminal(row,col):
+            self.reward=0
             return state,self.reward
 
         direction = self.actions[action]
@@ -35,15 +31,15 @@ class GridWorld:
         return next_state,self.reward
 
     def get_states(self):
-        
+        grid=[]
         for i in range(self.rows):
             m=[]
             for j in range(self.cols):
                 m.append((i,j))
                 print((i,j),end=" ")
-            self.grid.append(m)
+            grid.append(m)
             print("\n")
-        return self.grid
+        return grid
             
     
 if __name__ == "__main__":
@@ -51,8 +47,11 @@ if __name__ == "__main__":
     col=4
     action = Action()
     grid = GridWorld(row,col,action,1)
-    print(grid.step((0,1),"up"))
-    grid.get_states()
+    print(grid.step((1,1),"up"))
+    # grid.get_states()
+    print(grid.step((0,0),"up"))
+    print(grid.step((0,0),"left"))
+    print(grid.step((3,3),"down"))
 
 
 
