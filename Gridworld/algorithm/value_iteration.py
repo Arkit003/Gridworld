@@ -50,6 +50,6 @@ class ValueIteration:
             for j in range(self.env.cols):
                 print(self.V[i][j],end=" ")
             print("\n")
-        
+    
             
         
